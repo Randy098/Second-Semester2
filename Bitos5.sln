@@ -1,25 +1,58 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bitos5", "Bitos5\Bitos5.csproj", "{F02EA4F1-D2FD-4F1C-94D5-DDD8AA079CD0}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F02EA4F1-D2FD-4F1C-94D5-DDD8AA079CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F02EA4F1-D2FD-4F1C-94D5-DDD8AA079CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F02EA4F1-D2FD-4F1C-94D5-DDD8AA079CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F02EA4F1-D2FD-4F1C-94D5-DDD8AA079CD0}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {014D4D1A-8AC6-4999-A522-090BF53E2434}
-	EndGlobalSection
-EndGlobal
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bitos
+{
+    internal class Activity5_Bitos
+    {
+        static void Main()
+        {
+            int studentCount = 3;
+            string[] Student_Names = { "Joesen Reyes", "Vincent Melgar", "Jushua Olaso" };
+            int[] ages = { 18, 19, 20 };
+            string[] gradeLevels = { "Kinder - 12th Grade", "College Freshman - Fouth Year", "College Graduate" };
+            string[] favoriteSubjects = { "Programming C#", "HCI", "Basic Electronics" };
+            int[,] grades = { { 89, 85, 76 }, { 88, 82, 80 }, { 90, 87, 82 } }; // Prelim, Midterm, Final
+
+            int studentIndex = 0;
+            while (studentIndex < studentCount)
+            {
+                Console.Write("Enter Student Name: ");
+                string inputName = Console.ReadLine();
+
+                bool found = false;
+                for (int i = 0; i < studentCount; i++)
+                {
+                    if (inputName.Equals(Student_Names[i], StringComparison.OrdinalIgnoreCase))
+                    {
+                        int total = grades[i, 0] + grades[i, 1] + grades[i, 2];
+                        int highest = Math.Max(grades[i, 0], Math.Max(grades[i, 1], grades[i, 2]));
+                        int average = total / 3;
+
+                        Console.WriteLine("\nStudent Details:");
+                        Console.WriteLine("Full Name: " + Student_Names[i]);
+                        Console.WriteLine("Age: " + ages[i]);
+                        Console.WriteLine("Grade Level: " + gradeLevels[i]);
+                        Console.WriteLine("Favorite Subject: " + favoriteSubjects[i]);
+                        Console.WriteLine("Average Grade: " + average);
+                        Console.WriteLine("Highest Grade: " + highest);
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    Console.WriteLine("Student not found. Try again.");
+                    continue;
+                }
+
+                studentIndex++;
+
+            }
+        }
+    }
+}
