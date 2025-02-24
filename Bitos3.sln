@@ -1,25 +1,34 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bitos3", "Bitos3\Bitos3.csproj", "{B4F80941-3F2C-446A-B846-656D4BE8CCD0}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B4F80941-3F2C-446A-B846-656D4BE8CCD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4F80941-3F2C-446A-B846-656D4BE8CCD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4F80941-3F2C-446A-B846-656D4BE8CCD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4F80941-3F2C-446A-B846-656D4BE8CCD0}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {EC73F7AF-BF2E-4984-A8CE-0C9E1E93C8C3}
-	EndGlobalSection
-EndGlobal
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BitosActivity3
+{
+public static class Program
+{
+    public static void Main()
+    {
+        Console.Write("Enter your first name: ");
+        string firstName = Console.ReadLine();
+
+        Console.Write("Enter your last name (optional): ");
+        string lastName = Console.ReadLine();
+
+        string fullName;
+
+        if (string.IsNullOrEmpty(lastName))
+        {
+            fullName = firstName; //If no last name provided, only use first name
+        }
+        else
+        {
+            fullName = firstName + " " + lastName; //Standard concatenation if last name is given
+        }
+
+        Console.WriteLine($"Your full name is: {fullName}");
+        }
+
+    }
+}
