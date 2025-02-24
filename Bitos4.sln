@@ -1,25 +1,69 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bitos4", "Bitos4\Bitos4.csproj", "{1E16C425-ABC2-4AF7-AE69-384761563E08}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1E16C425-ABC2-4AF7-AE69-384761563E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E16C425-ABC2-4AF7-AE69-384761563E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E16C425-ABC2-4AF7-AE69-384761563E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E16C425-ABC2-4AF7-AE69-384761563E08}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5A0357D4-39AD-40D0-8A8C-2E3E3F8B48DE}
-	EndGlobalSection
-EndGlobal
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Activity4_Bitos;
+
+internal class Student
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Subject { get; set; }
+    public string GradeLevel { get; set; }
+    public int Grade { get; set; }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Enter number of students: ");
+        int numStudents = int.Parse(Console.ReadLine());
+        List<Student> students = new List<Student>();
+
+        for (int i = 0; i < numStudents; i++)
+        {
+            Student student = new Student();
+            Console.WriteLine($"\nEntering details for student {i + 1}");
+
+            Console.Write("First Name: ");
+            string FirstName = Console.ReadLine();
+
+            Console.Write("Last Name: ");
+            string LastName = Console.ReadLine();
+
+            Console.Write("Subject: ");
+            string Subject = Console.ReadLine();
+
+            Console.Write("Grade Level: ");
+            student.GradeLevel = Console.ReadLine();
+
+            Console.Write("Grade: ");
+            student.Grade = int.Parse(Console.ReadLine());
+
+            students.Add(student);
+        }
+
+        Console.WriteLine("\nStudent Information:");
+        foreach (var student in students)
+        {
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine($"| First Name: {student.FirstName,-30}");
+            Console.WriteLine($"| Last Name: {student.LastName,-30}");
+            Console.WriteLine($"| Subject: {student.Subject,-30}");
+            Console.WriteLine($"| GradeLVL: {student.GradeLevel,-30}");
+            Console.WriteLine($"| Grade: {student.Grade} ({GetGradeRemark(student.Grade)}){new string(' ', 17 - student.Grade.ToString().Length)}");
+            Console.WriteLine("----------------------------------");
+        }
+    }
+
+    static string GetGradeRemark(int grade)
+    {
+        if (grade >= 90) return "Excellent";
+        else if (grade >= 80) return "Good";
+        else if (grade >= 70) return "Average";
+        else if (grade >= 60) return "Pass";
+        else return "Fail";
+    }
+}
