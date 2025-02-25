@@ -1,22 +1,26 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Activity4_Bitos
+namespace Activity2_Bitos
 {
     internal class Class1
     {
         public static void Main(string[] args)
         {
-            string[] results = new string[2]; // Array to store two results
-            
-            for (int i = 0; i < 2; i++) // Loop only twice
+            string[] results = new string[2];
+
+            for (int i = 0; i < 2; i++)
             {
                 Console.WriteLine($"Entry {i + 1}:");
 
                 Console.Write("Enter Your First Name: ");
-                string Fname = Console.ReadLine();
+                string Firstname = Console.ReadLine();
 
                 Console.Write("Enter Your Last Name: ");
-                string Lname = Console.ReadLine();
+                string Lastname = Console.ReadLine();
 
                 Console.Write("Enter Your Subject: ");
                 string Subject = Console.ReadLine();
@@ -52,13 +56,31 @@ namespace Activity4_Bitos
                 {
                     result = "Invalid Code";
                 }
+                Console.WriteLine($"Hello {Lastname} {Firstname[i]}");
+                Console.WriteLine($"You Are {yearLvl[i]} year");
+                Console.WriteLine($"Taking {Subject[i]} with a Grade of {grade[i]}");
+            }
+            Console.WriteLine($"\nSearch Student:");
 
-                // Store result in array
-                results[i] = $"Entry {i + 1}: Hello {Lname} {Fname}, Year {yearLvl}, Subject: {Subject}, Result: {result}";
+            for (int i = 0; int < x; int++)
+            {
+                Console.WriteLine("\n\n Enter The Fitrst Name That u Want to Search: ");
+                string search = Console.ReadLine();
+                Boolean found = false;
 
-                // Display result immediately after input
-                Console.WriteLine(results[i]);
-                Console.WriteLine(); // Add a line break for readability
+                if (search == Firstname[i])
+                {
+                    Console.WriteLine("Student Found: ");
+                    Console.WriteLie(Firstname[i]);
+                    break;
+                }
+
+                if (!found)
+                {
+                    found = true;
+                    Console.WriteLine($"{search} is not in our System");
+                    break;
+                }
             }
         }
     }
